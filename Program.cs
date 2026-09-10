@@ -20,11 +20,13 @@ namespace Guy_Beginning
 
             List <Player> players = new List <Player>();
             players.Add(new Player { Name = "Lebron James", team = "76ers", position = "Forward", points = 48000 });
-            players.Add(new Player { Name = "Stephen Curry", team = "Warriors", position = "Guard", points = 20000 });
-            players.Add(new Player() { Name = "Kevin Durant", team = "Nets", position = "Forward", points = 25000 });
+            players.Add(new Player { Name = "Stephen Curry", team = "Warriors", position = "Guard", points = 23000 });
+            players.Add(new Player() { Name = "Kevin Durant", team = "Nets", position = "Forward", points = 28000 });
 
-            var clubswithCalifornia = clubs.values
-                .where
+            var clubswithCalifornia = clubs.Values.Where(c => c.State.StartsWith("C", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            Console.WriteLine("Clubs in California:");
+            clubswithCalifornia.ForEach(c => Console.WriteLine($"Name: {c.Name}, State: {c.State}, Founded: {c.Founded}, Coach: {c.Coach}, Championships: {c.Championships}"));
         }
     }
 }
